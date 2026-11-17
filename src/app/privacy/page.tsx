@@ -4,7 +4,17 @@ import { Footer } from "@/components/layout/footer";
 import { site } from "@/lib/site";
 import { cn, wrap } from "@/lib/cn";
 
-export const metadata: Metadata = { title: "Privacy notice", robots: { index: true } };
+export const metadata: Metadata = {
+  title: "Privacy notice",
+  description: "How Telio Software & Co. handles information you share through our enquiry form.",
+  alternates: { canonical: "/privacy" },
+  openGraph: {
+    url: "/privacy",
+    title: "Privacy notice | Telio Software & Co.",
+    description: "How Telio Software & Co. handles information you share through our enquiry form.",
+  },
+  robots: { index: true },
+};
 
 export default function Privacy() {
   return (
