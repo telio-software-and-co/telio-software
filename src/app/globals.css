@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #c1e81b;
+  --color-brand-hover: #a8ce15;
+  --color-ink: #0b0b0f;
+  --color-charcoal: #171915;
+  --color-canvas: #f7f8f2;
+  --color-muted: #62695c;
+  --color-brand-soft: #edf3d1;
+  --color-line: #dde1d0;
+  --radius-card: 0.875rem;
+  --radius-button: 0.625rem;
+}
+
+@theme inline {
+  --font-display: var(--font-space), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Two-tone ring stays visible on both light and dark surfaces. */
+:focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--color-ink);
+}
+
+/* Hero entrance: CSS only, so it works before hydration and keeps LCP fast. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+.rise {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--d, 0ms);
+}
+
+/* Workflow connector: dashes travel from inputs to outcomes. */
+@keyframes flow {
+  from { background-position: 0 0; }
+  to { background-position: 0 12px; }
+}
+.flow-line {
+  background-image: linear-gradient(to bottom, var(--color-brand) 50%, transparent 50%);
+  background-size: 2px 12px;
+  animation: flow 0.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise, .flow-line { animation: none; }
+}
